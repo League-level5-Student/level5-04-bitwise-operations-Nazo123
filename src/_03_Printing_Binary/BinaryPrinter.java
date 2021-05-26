@@ -8,21 +8,29 @@ public class BinaryPrinter {
 	 */
 
 	
-	public void printByteBinary(byte b) {
+	public static void printByteBinary(byte b) {
 		// We first want to print the bit in the one's place
 		
 		// Shift b seven bits to the right
-		
-		// Use the & operator to "mask" the bit in the one's place
-		// This can be done by "anding" (&) it with the value of 1
-		
-		// Print the result using System.out.print (NOT System.out.println)
-		
+		for(int i = 7; i > -1;i--) {
+			System.out.print((b >> i) & 1);
+		}
+		}
 		//Use this method to print the remaining 7 bits of b
-	}
 	
-	public void printShortBinary(short s) {
+	
+	public static void printShortBinary(short s) {
 		// Create 2 byte variables
+		short holder = s;
+	
+		for(int i = 15; i > 7;i--) {
+			System.out.print((holder >> i) & 1);
+		}
+		for(int i = 7; i > -1;i--) {
+			System.out.print((s >> i) & 1);
+		}
+		
+		
 		
 		// Use bit shifting and masking (&) to save the first
 		// 8 bits of s in one byte, and the second 8 bits of
@@ -32,22 +40,35 @@ public class BinaryPrinter {
 		// Make sure they are in the correct order
 	}
 	
-	public void printIntBinary(int i) {
+	public static void printIntBinary(int i) {
 		// Create 2 short variables
-		
+		short s = (short) i;
+		short s2 = (short) (i >>16);
 		// Use bit shifting and masking (&) to save the first
 		// 16 bits of i in one short, and the second 16 bits of
 		// i in the other short
-		
+		printShortBinary(s2);
+		printShortBinary(s);
+	
 		// Call printShortBinary twice using the two short variables
 		// Make sure they are in the correct order
 	}
 	
-	public void printLongBinary(long l) {
+	public static void printLongBinary(long l) {
 		// Use the same method as before to complete this method
+		int i = (int) l;
+		int i2 = (int) (l >>32);
+		// Use bit shifting and masking (&) to save the first
+		// 16 bits of i in one short, and the second 16 bits of
+		// i in the other short
+		printIntBinary(i2);
+		printIntBinary(i);
 	}
 	
 	public static void main(String[] args) {
-		// Test your methods here
+		//printByteBinary((byte) 128);
+		//printShortBinary( (short) 258);
+		printIntBinary(55);
+		//printLongBinary(9223372036854775807L);
 	}
 }
