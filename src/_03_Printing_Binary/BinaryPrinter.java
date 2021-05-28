@@ -66,9 +66,11 @@ public class BinaryPrinter {
 	}
 	
 	public static void main(String[] args) {
-		//printByteBinary((byte) 128);
+		printByteBinary((byte) 63);
+		printByteBinary((byte) 63);
+		printByteBinary((byte) 63);
 		//printShortBinary( (short) 258);
-		printIntBinary(55);
+		//printIntBinary(1421);
 		//printLongBinary(9223372036854775807L);
 	}
 }
