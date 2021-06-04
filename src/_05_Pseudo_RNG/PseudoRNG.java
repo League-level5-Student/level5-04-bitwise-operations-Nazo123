@@ -10,9 +10,11 @@ public class PseudoRNG {
 	 */
 	
 	//1. Create a member variable of type long called "seed"
-	
+	Long seed;
 	//2. Make a constructor that initializes the memeber variable
-	
+	public PseudoRNG(Long seed){
+		this.seed = seed;
+	}
 	//3. Complete the steps inside the xorShift method
 	
 	//4. Complete the steps in the main method
@@ -27,15 +29,15 @@ public class PseudoRNG {
 	long xorShift(){
 		//1. Create a local long called seed and set it equal to the member variable 
 		//   We will only use the local variable for the rest of the method
-		
+		long seed = this.seed;
 		//2. Shift seed to the left 13 bits and save the result
-		
+		seed = seed << 13;
 		//3. xor seed by the result of step 1 and save that result
-		
+		seed = this.seed & seed;
 		//4. Set seed equal to the result of step 2
 	
 		//5. Shift seed to the right 7 bits and save the result
-		
+		seed = seed >> 7;
 		//6. xor seed by the result of step 4 and save that result
 				
 		//7. Set seed equal to the result of step 5
