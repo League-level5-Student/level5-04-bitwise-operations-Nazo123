@@ -26,16 +26,18 @@ public class PseudoRNG {
 	
 	// This is called the xor shift. It is a very simple algorithm to generate
 	// Pseudo random numbers. 
-	long xorShift(){
+	long xorShift() {
+		long s;
+		long s1;
 		//1. Create a local long called seed and set it equal to the member variable 
 		//   We will only use the local variable for the rest of the method
 		long seed = this.seed;
 		//2. Shift seed to the left 13 bits and save the result
-		seed = seed << 13;
+		s = seed << 13;
 		//3. xor seed by the result of step 1 and save that result
-		seed = this.seed & seed;
+		s1 = this.seed ^ seed;
 		//4. Set seed equal to the result of step 2
-	
+	seed = s;
 		//5. Shift seed to the right 7 bits and save the result
 		seed = seed >> 7;
 		//6. xor seed by the result of step 4 and save that result
